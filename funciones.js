@@ -1,4 +1,4 @@
-export { ingresoDatos, opciones, numerosAleatorios, game }
+export { ingresoDatos, opciones }
 function ingresoDatos() {
     let entrada = Number.parseInt(prompt('Eliga las siguientes opciones\n1)Jugar\n2)Reglas\n3)Salir'))
     return entrada
@@ -40,7 +40,7 @@ function ordenamiento(unArray) {
     }
     return unArray
 }
-function game() {
+function puntajes() {
     let dados = [numerosAleatorios(1, 6), numerosAleatorios(1, 6), numerosAleatorios(1, 6), numerosAleatorios(1, 6), numerosAleatorios(1, 6)]
     let generala = 0
     let poker = 0
@@ -60,24 +60,65 @@ function game() {
         escalera += 1
     }
     if (generala != 0) {
-        return 5
+        return 50
     }
     else if (poker != 0) {
-        return 4
+        return 40
     }
     else if (foul != 0) {
-        return 3
+        return 30
     }
     else if (escalera != 0) {
-        return 2
+        return 20
     }
     else {
-        return 0
+        return dados[0] + dados[1]
     }
 }
 function mainGame() {
     const jugadorUno = prompt('Ingrese el nombre del jugador 1')
     const jugadorDos = prompt('Ingrese el nombre del jugador 2')
     let hp = Number.parseInt(prompt('Cuantos puntos hp le gustaria tener?'))
+    let turno = 1
+    let hp1 = hp
+    let hp2 = hp
+    let ganador
+    while (hp1 > 0 && hp2 > 0) {
+        console.log('Turno ' + turno)
+        let puntaje1 = puntajes()
+        let puntaje2 = puntajes()
+        console.log('El jugador 1 le ocasiona ' + puntaje1 + ' puntos de daño al jugador 2')
+        console.log('El jugador 2 le ocasiona ' + puntaje2 + ' puntos de daño al jugador 1')
+        hp1 -= puntaje2
+        hp2 -= puntaje1
+        if (hp1 < 0 && hp2 < 0) {
+            if (puntaje1 > puntaje2) {
+                ganador = jugadorUno
+            }
+            else {
+                ganador = jugadorDos
+            }
+        }
+        else if (hp1 > 0 && hp2 < 0) {
+            ganador = jugadorUno
+            hp2 = 0
+        }
+        else if (hp2 > 0 && hp1 < 0) {
+            ganador = jugadorDos
+            hp1 = 0
+        }
+        console.log(jugadorUno)
+        console.log("#".repeat(hp1))
+        console.log(jugadorDos)
+        console.log("#".repeat(hp2))
+        let condicion = prompt('Presione enter para continuar')
+        if (condicion == '') {
+            continue;
+        }
+        console.clear()
+        turno += 1
 
+    }
+    console.log('El/La ganador/a es ' + ganador)
 }
+mainGame()
