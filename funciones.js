@@ -1,20 +1,24 @@
-export { ingresoDatos, opciones }
-function ingresoDatos() {
+export { menu, opciones }
+function menu() {
     let entrada = Number.parseInt(prompt('Eliga las siguientes opciones\n1)Jugar\n2)Reglas\n3)Salir'))
     return entrada
 }
 function opciones(choice) {
     switch (choice) {
         case 1:
-            break;
+            mainGame()
+            return 1;
         case 2:
-            console.log('En el juego conocido como “Generala” se utilizan cinco dados que se lanzan simultáneamente. De acuerdo a los valores obtenidos en esos dados se tienen las combinaciones ganadoras que se muestran a continuación. Escribir un algoritmo para preparar la tabla de frecuencias de estas combinaciones, a partir de N lanzami{funciones} fromienen el mismo valor y los otros dos son iguales a otro valor (El jugador consigue 3 puntos)\nEscalera: Cuando los valores de los cinco dados forman una secuencia ascendente (El jugador consigue 2 puntos)\n')
-            console.log('Con los puntos que un jugador consigue en el turno, reduce el hp del otro jugador, cuando uno de los jugadores queda con 0 hp el juego termina. Los jugadores pueden elegir con cuantos puntos hp empezar')
-            break;
+            reglas()
+            return 1;
         case 3:
             console.log('Gracias por Jugar !!')
-            break;
+            return 0;
     }
+}
+function reglas() {
+    console.log('En el juego conocido como “Generala” se utilizan cinco dados que se lanzan simultáneamente. De acuerdo a los valores obtenidos en esos dados se tienen las combinaciones ganadoras que se muestran a continuación. Escribir un algoritmo para preparar la tabla de frecuencias de estas combinaciones, a partir de N lanzami{funciones} fromienen el mismo valor y los otros dos son iguales a otro valor (El jugador consigue 3 puntos)\nEscalera: Cuando los valores de los cinco dados forman una secuencia ascendente (El jugador consigue 2 puntos)\nSi no se cumplen ninguno de los casos anteriores, el puntaje sera la suma de los dos menores dados\n')
+    console.log('Con los puntos que un jugador consigue en el turno, reduce el hp del otro jugador, cuando uno de los jugadores queda con 0 hp el juego termina. Los jugadores pueden elegir con cuantos puntos hp empezar')
 }
 function numerosAleatorios(minimo, maximo) {
     return Math.floor((Math.random() * (maximo - minimo + 1)) + minimo)
@@ -121,4 +125,3 @@ function mainGame() {
     }
     console.log('El/La ganador/a es ' + ganador)
 }
-mainGame()
