@@ -1,0 +1,21 @@
+{
+  "name": "generala_js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hozk19/Generala_Js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hozk19/Generala_Js/issues"
+  },
+  "homepage": "https://github.com/Hozk19/Generala_Js#readme",
+  "description": ""
+}
